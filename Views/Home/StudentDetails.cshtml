@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>StudentDetails</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-success navbar-dark">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/home/index">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/home/products">Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/home/contact">Contacts</a>
+            </li>
+        </ul>
+    </nav>
+    @*this is razor*@
+    @{ 
+        string StudentResult;
+        @*Razor If*@
+        if(ViewBag.Marks >= 35)
+        {
+            StudentResult = "Pass";
+        }
+        else
+        {
+            StudentResult = "Fail";
+        }
+
+    }
+    <div class="container-fluid">
+        <table class="table">
+            <tr>
+                <td>Student Name</td>
+                <td>@ViewBag.StudentId</td>
+            </tr>
+            <tr>
+                <td>Student Name</td>
+                <td>@ViewBag.StudentName</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    @if (StudentResult == "Pass")
+            {
+                <span class="text-bg-danger-success">Congratulations</span>
+            }
+else
+            {
+                <span class="text-danger">Better Luck Next Time</span>
+            }
+                </td>
+                <td>Semesters</td>
+                <td>
+                    <ul>
+                        @*Razor For*@
+                        @for (int i = 1; i <= ViewBag.NoOfSemesters; i++)
+            {
+                <li>@i</li>
+            }
+                    </ul>
+                </td>
+            </tr>
+
+            
+        </table>
+    </div>
+</body>
+</html>
